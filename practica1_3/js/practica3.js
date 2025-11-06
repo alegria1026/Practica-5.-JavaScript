@@ -1,11 +1,17 @@
-const prompt = require('prompt-sync')();
+const billTotals = [50, 150, 20, 500];
 
-let entrada = prompt("Ingrese el total de la factura: ");
+const tips = [];
 
-let totalFactura =  Number(entrada);
+for (let bill of billTotals) {
+    if ( bill > 75) {
+        tips.push(bill * 0.1);
+    } else if (bill >= 30 && bill <= 75) {
+        tips.push(bill * 0.2);
+    } else {
+        tips.push(bill * 0.3);
+    }
+}
 
-if( totalFactura <= 0 || isNaN(totalFactura) ){
-    console.log("No es un número válido");
-} else {
-    console.log("Para una factura de $" + totalFactura + ", la propina debe ser de $" + (totalFactura * 0.1));
+for ( let i = 0; i < tips.length; i++ )  {
+    console.log("Para una factura de $" + billTotals[i] + ", la propina debe ser de $" + tips[i]);
 }
